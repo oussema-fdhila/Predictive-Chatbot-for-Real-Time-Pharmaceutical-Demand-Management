@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('open-chatbot').addEventListener('click', function() {
-        document.getElementById('chatbot-container').style.display = 'block';
-        this.style.display = 'none';
+    document.getElementById("open-chatbot").addEventListener("click", function() {
+        document.getElementById("chatbot-container").classList.remove("hidden");
+        document.getElementById("open-chatbot").style.display = 'none';
     });
 
-    document.getElementById('close-chatbot').addEventListener('click', function() {
-        document.getElementById('chatbot-container').style.display = 'none';
-        document.getElementById('open-chatbot').style.display = 'block';
+    document.getElementById("close-chatbot").addEventListener("click", function() {
+        document.getElementById("chatbot-container").classList.add("hidden");
+        document.getElementById("open-chatbot").style.display = 'block';
     });
 
     document.getElementById('send-chatbot-message').addEventListener('click', function() {

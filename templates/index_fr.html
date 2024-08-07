@@ -1,33 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="cache-control" content="max-age=0" />
-  <meta http-equiv="cache-control" content="no-cache" />
-  <meta http-equiv="expires" content="0" />
-  <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
-  <meta http-equiv="pragma" content="no-cache" />
-  <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0" name="viewport">
-  <meta name="twitter:widgets:theme" content="light">
-  <meta property="og:title" content="Sentinel Data | Big Data in Big Pharma" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="{{ url_for('static', filename='images/logo.png') }}">
-  <meta property="og:description" content="Sentinel Data est une société de logiciels specialisée dans les solutions basées sur le cloud liées à l'analyse avancée et la visualisation de données." />
-  <meta name="google-site-verification" content="Qknthf6T_CHMwkHM1F-VlGTujQBjTazGLVORVMtbX68" />
-  <title>Sentinel Data</title>
-  <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+	<meta charset="UTF-8" />
+	<meta http-equiv="cache-control" content="max-age=0" />
+	<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv="expires" content="0" />
+	<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+	<meta http-equiv="pragma" content="no-cache" />
+	<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0" name="viewport">
+	<meta name="twitter:widgets:theme" content="light">
+	<meta property="og:title" content="Sentinel Data | Big Data in Big Pharma" />
+	<meta property="og:type" content="website" />
+    <meta property="og:image" content="{{ url_for('static', filename='images/logo.png') }}">
+	<meta property="og:description" content="Sentinel Data is a Software Company delivering cloud-based Solutions related to Data Analysis and Visualization." />
+	<meta name="google-site-verification" content="Qknthf6T_CHMwkHM1F-VlGTujQBjTazGLVORVMtbX68" />
+	<title>Sentinel Data</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
 
-  <!-- Font -->
-  <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700%7COpen+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+	<!-- Font -->
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700%7COpen+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
 
-  <!-- Css -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/core.min.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/skin.css') }}">
+    <!-- Css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/core.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/skin.css') }}">
+	<!-- Ajoutez cette ligne dans l'en-tête de votre fichier HTML (index_en.html) -->
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/chatbot.css') }}">
 
-  <!--[if lt IE 9]>
+	<!--[if lt IE 9]>
     <script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+    <script>
+		function showRegisterForm() {
+			document.getElementById('login-form-container').style.display = 'none';
+			document.getElementById('register-form').style.display = 'block';
+		}
 
+		function showLoginForm() {
+			document.getElementById('login-form-container').style.display = 'block';
+			document.getElementById('register-form').style.display = 'none';
+		}
+	</script>
+	<style>
+		#chatbot-container {
+			position: fixed;
+			bottom: 20px;
+			right: 20px;
+			width: 300px;
+			border: 1px solid #ccc;
+			background-color: #2C3E50;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			z-index: 1000;
+			color: #ECF0F1;
+			display: flex;
+			flex-direction: column;
+		}
+
+		#chatbot-header {
+			background-color: #34495E;
+			padding: 10px;
+			border-bottom: 1px solid #ccc;
+			color: #ECF0F1;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		#chatbot-body {
+			padding: 10px;
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+		}
+
+		#chatbot-messages {
+			flex: 1;
+			overflow-y: auto;
+			margin-bottom: 10px;
+			color: #ECF0F1;
+		}
+
+		#chatbot-container input[type="text"] {
+			background-color: #34495E;
+			color: #ECF0F1;
+			border: 1px solid #ccc;
+			padding: 5px;
+			margin-bottom: 5px;
+			width: calc(100% - 12px);
+			flex-shrink: 0;
+		}
+
+		#send-chatbot-message {
+			background-color: #007bff;
+			color: #ECF0F1;
+			border: none;
+			padding: 10px;
+			cursor: pointer;
+			margin-top: 10px;
+			flex-shrink: 0;
+		}
+
+		#open-chatbot {
+			position: fixed;
+			bottom: 20px;
+			right: 20px;
+			background-color: #007bff;
+			color: #ECF0F1;
+			border: none;
+			padding: 10px 20px;
+			cursor: pointer;
+			z-index: 1000;
+		}
+
+		#chatbot-container.hidden {
+			display: none;
+		}
+	</style>
 </head>
 <body class="shop home-page">
 
@@ -97,21 +187,32 @@
                 </div>
               </div>
               <nav class="navigation nav-block secondary-navigation nav-right">
-                <ul>
-                  <li>
-                    <!-- Button -->
-                    <div class="v-align-middle">
-                      <a data-content="inline" data-toolbar="" data-networks="twitter;pinterest" data-modal-mode data-modal-width="600" href="#signup-lightbox" class="lightbox-link button no-label-on-mobile small pull-right no-margin-bottom"><span class="icon-lock left"></span><span>Se Connecter</span></a>
-                    </div>
-                  </li>
-                  <li class="aux-navigation hide">
-                    <!-- Aux Navigation -->
-                    <a href="#" class="navigation-show overlay-nav-show nav-icon">
-                      <span class="icon-menu"></span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
+								<ul>
+									<li>
+										<!-- Button -->
+										<div class="v-align-middle" id="auth-nav">
+											{% if user %}
+												<span class="button no-label-on-mobile small pull-right no-margin-bottom">
+													<span class="user-name">{{ user.username }}</span>
+													<a href="#" onclick="confirmLogout()" class="button no-label-on-mobile small pull-right no-margin-bottom">
+														<span class="icon-lock left"></span><span>Déconnexion</span>
+													</a>
+												</span>
+											{% else %}
+												<a data-content="inline" data-toolbar="" data-networks="twitter;pinterest" data-modal-mode data-modal-width="600" href="#popup-form" class="lightbox-link button no-label-on-mobile small pull-right no-margin-bottom">
+													<span class="icon-lock left"></span><span>Connexion</span>
+												</a>
+											{% endif %}
+										</div>
+									</li>
+									<li class="aux-navigation hide">
+										<!-- Aux Navigation -->
+										<a href="#" class="navigation-show overlay-nav-show nav-icon">
+											<span class="icon-menu"></span>
+										</a>
+									</li>
+								</ul>
+							</nav>			
               <nav class="navigation nav-block primary-navigation nav-right">
                 <ul>
                   <li class="current">
@@ -375,24 +476,76 @@
         </div>
         <!-- Hero 3 Section End -->
 
-        <!-- Login Modal -->
-        <div id="signup-lightbox" class="pt-70 pb-50 hide">
+       <!-- Popup Form -->
+        <div id="popup-form" class="pt-70 pb-50">
           <div class="row">
-            <div class="column width-12 left">
-              <div class="login-form-container">
-                <h2 class="mb-20">Connectez Vous &amp; Commencer l'Aventure</h2>
-                <p class="mb-30">Les clients recevront l'information d'identification et un lien vers notre solution sur demande. La connexion à notre solution utilise une authentification à multi-facteurs.</p>
-                <p class="mb-30">Pour demander vos informations d'identification et commencer à utiliser notre solution, envoyez-nous un e-mail.</p>
-                    <a href="mailto:info@sentineld.com?Subject=Demander%20Une%20Demo" target="_top"
-                    class="center button medium bkg-theme color-white border-hover-theme color-hover-theme mb-60">
-                      <span class="icon-mail left"></span>
-                      Demander une Démo
-                    </a>
+              <div class="column width-12 left">
+                  {% if not user %}
+                  <div id="login-form-container">
+                      <h2 class="mb-20">Connectez Vous &amp; Commencez l'Aventure</h2>
+                      <p class="mb-30">Les clients recevront l'information d'identification et un lien vers notre solution sur demande. La connexion à notre solution utilise une authentification à multi-facteurs.</p>
+                      <form method="POST" action="{{ url_for('login_fr') }}">
+                          {{ form.hidden_tag() }}
+                          <div class="mb-30">
+                              {{ form.username.label }}<br>
+                              {{ form.username }}
+                          </div>
+                          <div class="mb-30">
+                              {{ form.password.label }}<br>
+                              {{ form.password }}
+                          </div>
+                          <div class="mb-30">
+                              {{ form.submit }}
+                          </div>
+                      </form>
+
+                      {% with messages = get_flashed_messages(with_categories=true) %}
+                          {% if messages %}
+                              {% for category, message in messages %}
+                                  <div class="alert alert-{{ category }}">
+                                      {{ message }}
+                                  </div>
+                              {% endfor %}
+                          {% endif %}
+                      {% endwith %}
+                      <a href="#popup-form" onclick="showRegisterForm()">Vous n'avez pas de compte ? Inscrivez-vous</a>
+                  </div>
+                  <!-- Register Form -->
+                  <div id="register-form" style="display: none;">
+                      <h2 class="mb-20">Inscrivez-Vous &amp; Commencez l'Aventure</h2>
+                      <p class="mb-30">Les clients recevront l'information d'identification et un lien vers notre solution sur demande. La connexion à notre solution utilise une authentification à multi-facteurs.</p>
+                      <form method="POST" action="{{ url_for('register_fr') }}">
+                          {{ register_form.hidden_tag() }}
+                          <div class="mb-30">
+                              {{ register_form.username.label }}<br>
+                              {{ register_form.username }}
+                          </div>
+                          <div class="mb-30">
+                              {{ register_form.password.label }}<br>
+                              {{ register_form.password }}
+                          </div>
+                          <div class="mb-30">
+                              {{ register_form.submit }}
+                          </div>
+                      </form>
+
+                      {% with messages = get_flashed_messages(with_categories=true) %}
+                          {% if messages %}
+                              {% for category, message in messages %}
+                                  <div class="alert alert-{{ category }}">
+                                      {{ message }}
+                                  </div>
+                              {% endfor %}
+                          {% endif %}
+                      {% endwith %}
+
+                      <a href="#popup-form" onclick="showLoginForm()">Vous avez déjà un compte ? Connectez-vous</a>
+                  </div>
+                  {% endif %}
               </div>
-            </div>
           </div>
         </div>
-        <!-- Login Modal End -->
+        <!-- Popup Form End -->
       </div>
       <!-- Content End -->
 
@@ -451,5 +604,67 @@
   <!-- Js -->
   <script src="{{ url_for('static', filename='js/jquery-1.12.4.min.js') }}"></script>
   <script src="{{ url_for('static', filename='js/timber.master.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+  <script>
+		function confirmLogout() {
+			if (confirm("Etes-vous sûr de vouloir vous déconnecter ?")) {
+				window.location.href = "{{ url_for('logout_fr') }}";
+			}
+			else{
+				window.location.href = "{{ url_for('home_fr') }}";
+			}
+		}
+		document.addEventListener('DOMContentLoaded', function() {
+			// Simulate a user login status. Replace with your actual login check.
+			var isLoggedIn = false;  // Change to true if user is logged in.
+			var userName = "John Doe";  // Replace with actual user's name.
+	
+			var loginButton = document.getElementById('login-button');
+			var loginText = document.getElementById('login-text');
+			var userStatus = document.getElementById('user-status');
+	
+			if (isLoggedIn) {
+				// Change the login button to show user's name and logout option
+				loginText.textContent = userName;
+				loginButton.classList.remove('lightbox-link');
+				loginButton.href = "#";
+				loginButton.onclick = function() {
+					// Handle logout logic here
+					alert('Logged out');
+					// Reset to login state after logout
+					loginText.textContent = "Login";
+					loginButton.href = "#signup-lightbox";
+					loginButton.onclick = null;
+				};
+	
+				// Create and append logout icon
+				var logoutIcon = document.createElement('span');
+				logoutIcon.classList.add('icon-logout', 'left');
+				loginButton.insertBefore(logoutIcon, loginText);
+			}
+		});
+	</script>
+  <style>
+    .user-name {
+        font-size: 20px; /* Ajustez cette valeur selon vos besoins */
+        color: white; /* Optionnel : pour changer la couleur du texte */
+    }
+  </style>
+  {% if user %}
+  <div id="chatbot-container" class="hidden">
+      <div id="chatbot-header">
+        <span>Allez, Prédisez</span>
+        <button id="close-chatbot">X</button>
+      </div>
+      <div id="chatbot-container ">
+        <div id="chatbot-messages"></div>
+        <input type="text" id="chatbot-input" placeholder="Type a message...">
+        <input type="text" id="chatbot-product" placeholder="Enter product...">
+        <input type="text" id="chatbot-sector" placeholder="Enter sector...">
+        <button id="send-chatbot-message">Send</button>
+      </div>
+  </div>
+  <button id="open-chatbot">Allez, Prédisez</button>	
+  {% endif %}
 </body>
 </html>
